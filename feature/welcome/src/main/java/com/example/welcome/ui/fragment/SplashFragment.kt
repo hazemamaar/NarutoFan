@@ -1,14 +1,10 @@
 package com.example.welcome.ui.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import com.example.core.base.BaseFragment
-import com.example.core.extentions.invisible
+
 import com.example.core.extentions.navigateSafe
 import com.example.core.extentions.observe
 import com.example.welcome.R

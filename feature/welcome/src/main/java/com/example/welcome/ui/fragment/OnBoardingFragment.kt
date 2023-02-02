@@ -5,10 +5,7 @@ import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.core.base.BaseFragment
-import com.example.core.extentions.gone
-import com.example.core.extentions.invisible
-import com.example.core.extentions.navigateSafe
-import com.example.core.extentions.observe
+import com.example.core.extentions.*
 import com.example.welcome.R
 import com.example.welcome.databinding.FragmentOnBoardingBinding
 import com.example.welcome.ui.adapters.OnBoardAdapter
@@ -51,7 +48,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding,OnBoardingView
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == 2) {
-                    binding.finishBtn.invisible()
+                    binding.finishBtn.visible()
                 } else {
                     binding.finishBtn.gone()
                 }
