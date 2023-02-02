@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="welcome_word">#000000</color>
+    <color name="welcome_page">#707070</color>
+    <color name="splash">#F7EFE5</color>
+    <color name="btn">#C3ACD0</color>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="greetings">Greetings</string>
+    <string name="explore">Explore</string>
+    <string name="power">Power</string>
+    <string name="first_onboard_page">Are you a Naruto fan? Because if you are then we have a great news for you!</string>
+    <string name="second_onboard_page">Find your favorite heroes and learn some of the things that you didn\'t know about.</string>
+    <string name="third_onboard_page">Check out your hero\'s power and  see how much are they strong comparing to others.</string>
+</resources>
