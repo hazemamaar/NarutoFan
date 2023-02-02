@@ -18,6 +18,5 @@ rootProject.name = "NarutoFan"
 include ':app'
 include ':core'
 include ':feature'
-include ':buildgradle'
 include ':feature:welcome'
 include ':feature:home'

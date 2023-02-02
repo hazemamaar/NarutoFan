@@ -8,7 +8,11 @@
         android:id="@+id/onBoardingFragment"
         android:name="com.example.welcome.ui.fragment.OnBoardingFragment"
         android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" />
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_home_nav"
+            app:destination="@id/home_nav" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.welcome.ui.fragment.SplashFragment"
@@ -18,4 +22,5 @@
             android:id="@+id/action_splashFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
     </fragment>
+    <include app:graph="@navigation/home_nav" />
 </navigation>

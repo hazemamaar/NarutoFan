@@ -32,9 +32,12 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding,OnBoardingView
         subscribeToObservers()
         viewPager2Scrolling()
         initIndicator()
+        binding.finishBtn.setOnClickListener{
+            navigateSafe(OnBoardingFragmentDirections.actionOnBoardingFragmentToHomeNav(), container = com.example.home.R.id.frag_host)
+        }
     }
 
-    fun viewPager2Scrolling() {
+    private fun viewPager2Scrolling() {
         binding.viewpagerOnboard.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,

@@ -27,6 +27,11 @@
             android:exported="false">
 
         </activity>
+        <activity
+            android:name="com.example.home.ui.activities.HomeActivity"
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>
