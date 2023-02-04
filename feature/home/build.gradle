@@ -84,4 +84,11 @@ dependencies {
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
+//retrofit and other
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.5"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    implementation 'com.google.code.gson:gson:2.9.0'
 }

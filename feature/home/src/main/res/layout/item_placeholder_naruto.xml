@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="400dp"
     android:layout_marginStart="10dp"
 
     android:layout_marginEnd="10dp"
-    android:background="@color/background_shimmer"
+    android:backgroundTint="@color/background_shimmer"
     app:cardCornerRadius="13dp"
     app:cardElevation="0dp"
     android:layout_marginBottom="10dp"

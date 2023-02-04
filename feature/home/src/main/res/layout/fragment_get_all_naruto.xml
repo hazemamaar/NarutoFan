@@ -37,19 +37,19 @@
             <include layout="@layout/item_placeholder_naruto" />
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rvCarts"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_marginStart="@dimen/_7sdp"-->
-<!--        android:layout_marginTop="@dimen/_15sdp"-->
-<!--        android:layout_marginEnd="@dimen/_7sdp"-->
-<!--        android:clipToPadding="false"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/myCard"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/promo"-->
-<!--        android:layout_marginBottom="@dimen/_20sdp"-->
-<!--        />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_naruto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:layout_marginBottom="7dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_naruto_rv"
+        tools:itemCount="20"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
