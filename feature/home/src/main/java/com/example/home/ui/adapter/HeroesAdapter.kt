@@ -15,7 +15,8 @@ class HeroesAdapter @Inject constructor() : RecyclerView.Adapter<HeroesAdapter.H
     inner class HeroesViewHolder(private val binding: ItemNarutoRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Hero){
-
+            binding.titleTxt.text = item.name
+            binding.desTxt.text = item.about
         }
     }
 

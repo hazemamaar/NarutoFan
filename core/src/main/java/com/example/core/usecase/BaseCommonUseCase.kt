@@ -18,7 +18,7 @@ abstract class BaseCommonUseCase<RequestType : BaseCommonResponse, ResultType : 
     //run the remote api
     abstract fun executeRemote(
         params: Params?
-    ): Flow<NetworkResponse<RequestType, ErrorResponse>>
+    ): Flow<Resource<RequestType>>
 
     fun handler(onResult: (Resource<ResultType>) -> Unit) =
         CoroutineExceptionHandler { _, exception ->

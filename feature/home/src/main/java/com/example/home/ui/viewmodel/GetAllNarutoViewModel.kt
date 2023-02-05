@@ -22,13 +22,16 @@ class GetAllNarutoViewModel @Inject constructor(private val getAllNarutoUseCase:
         getAllNarutoUseCase.invoke(viewModelScope) { res ->
             when (res) {
                 is Resource.Failure -> {
+                    Log.e("success",res.message.toString())
                     produce(HeroesAction.Failure(res.message.toString()))
 
                 }
                 is Resource.Success -> {
-                    produce(HeroesAction.Success(res.data.heroes))
+                    Log.e("success",res.data.toString())
+                    produce(HeroesAction.Success(res.data))
                 }
                 is Resource.Progress ->{
+                    Log.e("success",res.loading.toString())
                     produce(HeroesAction.Loading(res.loading))
                 }
                 else -> {}

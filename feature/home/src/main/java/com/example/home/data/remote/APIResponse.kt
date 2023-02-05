@@ -7,6 +7,5 @@ import kotlinx.android.parcel.Parcelize
 
 
 data class APIResponse(
-    @SerializedName("heroes")
     val heroes: List<Hero>
 )

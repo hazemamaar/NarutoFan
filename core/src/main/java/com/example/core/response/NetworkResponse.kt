@@ -13,7 +13,6 @@ sealed class NetworkResponse<out T : Any, out U : Any> {
 
         fun <T : Any, U : Any> success(
             body: T,
-
             code: Int
         ): NetworkResponse<T, U> =
             Success(body, code)

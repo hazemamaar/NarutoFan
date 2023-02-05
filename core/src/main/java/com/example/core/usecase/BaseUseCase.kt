@@ -31,23 +31,18 @@ abstract class BaseUseCase<RequestType : BaseCommonResponse, ResultType : Any, i
             onResult.invoke(Resource.loading())
             runFlow(executeRemote(params), onResult).collect {
                 when (it) {
-                    is NetworkResponse.Success -> {
-                        if (it.body.success == true
+                    is Resource.Success -> {
+                        if (it.data.success == true
                         ) {
-                            val res = mapper(it.body)
+                            val res = mapper(it.data)
                             onResult.invoke(Resource.success(res))
                         } else {
-                            showFailureMessage(onResult, it.body.message)
+                            showFailureMessage(onResult, it.data.message)
                         }
                     }
-                    is NetworkResponse.NetworkError -> showFailureMessage(
+                    is Resource.Failure -> showFailureMessage(
                         onResult,
-                        it.error.message
-                    )
-                    is NetworkResponse.ServerError -> showFailureMessage(onResult, it.body?.message)
-                    is NetworkResponse.UnknownError -> showFailureMessage(
-                        onResult,
-                        it.error.toString()
+                        it.message
                     )
                 }
                 onResult.invoke(Resource.loading(false))
