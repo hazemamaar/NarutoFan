@@ -1,8 +1,10 @@
 package com.example.home.ui.fragment
 
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.base.BaseFragment
 import com.example.core.extentions.gone
 import com.example.core.extentions.observe
@@ -50,9 +52,12 @@ class GetAllNarutoFragment : BaseFragment<FragmentGetAllNarutoBinding, GetAllNar
             is HeroesAction.Success -> {
                 binding.shimmer.gone()
                 Toast.makeText(context, action.Heroes.toString(), Toast.LENGTH_SHORT).show()
-                heroesAdapter.heroes=action.Heroes
-                binding.rvNaruto.adapter=heroesAdapter
-                binding.rvNaruto.visible()
+                binding.rvNaruto.apply {
+                    heroesAdapter.heroes=action.Heroes
+                    adapter=heroesAdapter
+                    layoutManager = LinearLayoutManager(activity)
+                }
+
             }
         }
     }

@@ -1,6 +1,10 @@
 package com.example.home.di
 
 import android.content.Context
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.example.home.R
 import com.example.home.data.remote.service.ApiService
 import dagger.Module
 import dagger.Provides
@@ -51,7 +55,7 @@ class NetworkModule{
     fun providesApiService(okHttpClient: OkHttpClient): ApiService =
         Retrofit.Builder()
             .run {
-                baseUrl("https://77ab-196-221-102-249.eu.ngrok.io/")
+                baseUrl("https://b964-154-182-90-189.eu.ngrok.io")
                 client(okHttpClient)
                 addConverterFactory(GsonConverterFactory.create())
                 build()
@@ -62,6 +66,14 @@ class NetworkModule{
     fun provideApplicationContext(
         @ApplicationContext context: Context,
     ) = context
-
+    @Singleton
+    @Provides
+    fun provideGlideInstance(
+        @ApplicationContext context: Context
+    ) = Glide.with(context).setDefaultRequestOptions(
+        RequestOptions()
+            .placeholder(R.drawable.placeholder)
+            .error(R.drawable.network_error)
+            .diskCacheStrategy(DiskCacheStrategy.DATA))
 
 }

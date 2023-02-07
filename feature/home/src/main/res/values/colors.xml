@@ -2,6 +2,6 @@
 <resources>
     <color name="light_gray">#E3E3E3</color>
     <color name="background_shimmer">#F1F1F1</color>
-    <color name="background_rv">#707070</color>
+    <color name="background_rv">#1D1D1D</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

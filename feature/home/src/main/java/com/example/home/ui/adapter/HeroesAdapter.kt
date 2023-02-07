@@ -1,22 +1,27 @@
 package com.example.home.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.example.home.data.remote.Hero
 import com.example.home.databinding.ItemNarutoRvBinding
 import javax.inject.Inject
 
 
-class HeroesAdapter @Inject constructor() : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
+class HeroesAdapter @Inject constructor(val glide : RequestManager) : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
     inner class HeroesViewHolder(private val binding: ItemNarutoRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Hero){
             binding.titleTxt.text = item.name
             binding.desTxt.text = item.about
+            glide.load("https://b964-154-182-90-189.eu.ngrok.io/images/sasuke.jpg").into(binding.imgHero)
+
         }
     }
 
@@ -48,6 +53,7 @@ class HeroesAdapter @Inject constructor() : RecyclerView.Adapter<HeroesAdapter.H
 
     override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) {
         val hero = heroes[position]
+        Log.e("hero", "onBindViewHolder: "+hero )
         holder.apply {
             bind(hero)
         }

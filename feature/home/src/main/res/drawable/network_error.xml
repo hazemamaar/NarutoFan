@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="161" height="129" viewBox="0 0 161 129">
+  <g id="network_error" transform="translate(-126 -91)">
+    <g id="Rectangle_48" data-name="Rectangle 48" transform="translate(126 91)" fill="none" stroke="#000" stroke-width="5">
+      <rect width="161" height="129" stroke="none"/>
+      <rect x="2.5" y="2.5" width="156" height="124" fill="none"/>
+    </g>
+    <line id="Line_3" data-name="Line 3" x2="155" transform="translate(128.5 119.5)" fill="none" stroke="#000" stroke-width="4"/>
+    <rect id="Rectangle_50" data-name="Rectangle 50" width="16" height="6" transform="translate(159 104)"/>
+    <rect id="Rectangle_51" data-name="Rectangle 51" width="16" height="6" transform="translate(139 104)"/>
+    <g id="sad" transform="translate(147.392 109.422)">
+      <path id="Path_72" data-name="Path 72" d="M38.546,49.122a7.486,7.486,0,1,0-7.486-7.486,7.486,7.486,0,0,0,7.486,7.486Z" transform="translate(0.03 0)"/>
+      <path id="Path_73" data-name="Path 73" d="M64.486,49.122A7.486,7.486,0,1,0,57,41.636a7.486,7.486,0,0,0,7.486,7.486Z" transform="translate(12.926 0)"/>
+      <path id="Path_74" data-name="Path 74" d="M58.638,53.85A30.453,30.453,0,0,0,31,71.577l5.779,2.635a23.955,23.955,0,0,1,43.658,0l5.779-2.635A30.467,30.467,0,0,0,58.638,53.85Z" transform="translate(0 9.794)"/>
+    </g>
+  </g>
+</svg>
