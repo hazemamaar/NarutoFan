@@ -7,7 +7,7 @@ import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class BaseResponse<T>(
-    @SerializedName("heroes")
+    @SerializedName("data")
     var data: @RawValue T? = null,
 
 ) : BaseCommonResponse()

@@ -55,7 +55,7 @@ class NetworkModule{
     fun providesApiService(okHttpClient: OkHttpClient): ApiService =
         Retrofit.Builder()
             .run {
-                baseUrl("https://b964-154-182-90-189.eu.ngrok.io")
+                baseUrl("https://1b78-154-182-118-82.eu.ngrok.io")
                 client(okHttpClient)
                 addConverterFactory(GsonConverterFactory.create())
                 build()

@@ -1,15 +1,15 @@
 package com.example.home.ui.fragment
 
+import android.app.Activity
 import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.base.BaseFragment
-import com.example.core.extentions.gone
-import com.example.core.extentions.observe
-import com.example.core.extentions.showLogMessage
-import com.example.core.extentions.visible
+import com.example.core.extentions.*
+import com.example.core.helpers.ConnectionLiveData
+import com.example.home.R
 import com.example.home.databinding.FragmentGetAllNarutoBinding
 import com.example.home.ui.adapter.HeroesAdapter
 import com.example.home.ui.viewmodel.GetAllNarutoViewModel
@@ -22,7 +22,11 @@ import javax.inject.Inject
 class GetAllNarutoFragment : BaseFragment<FragmentGetAllNarutoBinding, GetAllNarutoViewModel>() {
     @Inject
     lateinit var heroesAdapter: HeroesAdapter
+
     override fun onFragmentReady() {
+
+        navigateSafe(GetAllNarutoFragmentDirections.actionGetAllNarutoFragmentToBottomSheetHeroFragment(),
+            container = R.id.frag_host)
         mViewModel.getAllNaruto()
         subscribeToObservers()
     }

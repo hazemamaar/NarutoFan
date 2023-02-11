@@ -1,4 +1,4 @@
-package com.example.core.usecase
+package com.example.core.base.usecase
 
 import com.example.core.extentions.showLogMessage
 import com.example.core.response.BaseCommonResponse

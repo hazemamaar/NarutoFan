@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NarutoFan"
         tools:targetApi="31">
-        <activity android:name="com.example.welcome.ui.activities.WelcomeActivity"
+        <activity android:name="com.example.welcome.ui.activities.SplashActivity"
             android:configChanges="uiMode"
             android:exported="true">
             <intent-filter>

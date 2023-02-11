@@ -4,4 +4,6 @@
     <color name="background_shimmer">#F1F1F1</color>
     <color name="background_rv">#1D1D1D</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bottom_sheet_background">#084888</color>
+    <color name="bottom_sheet_text">#BBBBBB</color>
 </resources>
