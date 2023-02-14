@@ -11,12 +11,16 @@
         android:label="fragment_get_all_naruto"
         tools:layout="@layout/fragment_get_all_naruto" >
         <action
-            android:id="@+id/action_getAllNarutoFragment_to_bottomSheetHeroFragment"
-            app:destination="@id/bottomSheetHeroFragment" />
+            android:id="@+id/action_getAllNarutoFragment_to_heroFragment"
+            app:destination="@id/heroFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bottomSheetHeroFragment"
-        android:name="com.example.home.ui.fragment.BottomSheetHeroFragment"
-        android:label="fragment_bottom_shet_hero"
-        tools:layout="@layout/fragment_bottom_shet_hero" />
+        android:id="@+id/heroFragment"
+        android:name="com.example.home.ui.fragment.HeroFragment"
+        android:label="fragment_hero"
+        tools:layout="@layout/fragment_hero" >
+        <argument
+            android:name="hero"
+            app:argType="com.example.home.data.remote.Hero" />
+    </fragment>
 </navigation>

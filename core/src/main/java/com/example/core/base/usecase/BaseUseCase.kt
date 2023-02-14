@@ -1,5 +1,6 @@
 package com.example.core.base.usecase
 
+import android.util.Log
 import com.example.core.response.BaseCommonResponse
 import com.example.core.response.NetworkResponse
 import com.example.core.response.Resource
@@ -30,21 +31,37 @@ abstract class BaseUseCase<RequestType : BaseCommonResponse, ResultType : Any, i
         scope.launch(handler(onResult) + Dispatchers.Main) {
             onResult.invoke(Resource.loading())
             runFlow(executeRemote(params), onResult).collect {
-                when (it) {
-                    is Resource.Success -> {
-                        if (it.data.success == true
-                        ) {
-                            val res = mapper(it.data)
-                            onResult.invoke(Resource.success(res))
-                        } else {
-                            showFailureMessage(onResult, it.data.message)
-                        }
+                Log.e("hazz",it.toString())
+                try {
+                    if (it.success == true
+                    ) {
+                        val res = mapper(it)
+
+                        onResult.invoke(Resource.success(res))
+                    } else {
+                        showFailureMessage(onResult, it.message)
                     }
-                    is Resource.Failure -> showFailureMessage(
+                }catch (e: Exception) {
+                    showFailureMessage(
                         onResult,
                         it.message
                     )
                 }
+//                when (it) {
+//                    is Resource.Success -> {
+//                        if (it.data.success == true
+//                        ) {
+//                            val res = mapper(it.data)
+//                            onResult.invoke(Resource.success(res))
+//                        } else {
+//                            showFailureMessage(onResult, it.data.message)
+//                        }
+//                    }
+//                    is Resource.Failure -> showFailureMessage(
+//                        onResult,
+//                        it.message
+//                    )
+//                }
                 onResult.invoke(Resource.loading(false))
             }
         }

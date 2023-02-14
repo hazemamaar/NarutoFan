@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.home.R
+import com.example.home.common.uitils.Constant
 import com.example.home.data.remote.service.ApiService
 import dagger.Module
 import dagger.Provides
@@ -55,7 +56,7 @@ class NetworkModule{
     fun providesApiService(okHttpClient: OkHttpClient): ApiService =
         Retrofit.Builder()
             .run {
-                baseUrl("https://1b78-154-182-118-82.eu.ngrok.io")
+                baseUrl(Constant.BASE_URL)
                 client(okHttpClient)
                 addConverterFactory(GsonConverterFactory.create())
                 build()

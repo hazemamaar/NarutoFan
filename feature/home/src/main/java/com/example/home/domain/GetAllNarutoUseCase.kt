@@ -17,7 +17,7 @@ class GetAllNarutoUseCase @Inject constructor(val dataRepo: DataRepo): BaseUseCa
         return req.data!!
     }
 
-    override fun executeRemote(params: Any?): Flow<Resource<BaseResponse<List<Hero>>>> = flow{
+    override fun executeRemote(params: Any?): Flow<BaseResponse<List<Hero>>> = flow{
         emit(dataRepo.getAllNaruto())
     }
 }
