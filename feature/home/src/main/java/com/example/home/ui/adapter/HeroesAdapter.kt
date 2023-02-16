@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.example.home.common.uitils.Constant
-import com.example.home.data.remote.Hero
+import com.example.home.data.Hero
 import com.example.home.databinding.ItemNarutoRvBinding
 import javax.inject.Inject
 

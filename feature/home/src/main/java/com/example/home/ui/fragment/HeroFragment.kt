@@ -6,10 +6,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
 import com.example.core.base.BaseFragment
+import com.example.core.extentions.popBack
+import com.example.home.R
 import com.example.home.common.uitils.Constant
-import com.example.home.data.remote.Hero
+import com.example.home.data.Hero
 import com.example.home.databinding.FragmentHeroBinding
-import com.example.home.ui.adapter.HeroesAdapter
 import com.example.home.ui.adapter.RelationsAdapter
 import com.example.home.ui.viewmodel.HeroViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -33,6 +34,9 @@ class HeroFragment : BaseFragment<FragmentHeroBinding, HeroViewModel>() {
     override fun onFragmentReady() {
         handleBottomSheet()
         fillHero()
+        binding.imgCancel.setOnClickListener {
+            popBack(R.id.frag_host)
+        }
     }
 
     private fun fillHero() {

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E7E7E7"
     tools:context=".ui.fragment.HeroFragment">
+
 <ImageView
     android:id="@+id/img_hero"
     android:layout_width="match_parent"
@@ -15,5 +17,14 @@
 <include
     android:id="@+id/bottom"
     layout="@layout/fragment_bottom_sheet_hero"/>
+
+    <ImageView
+        android:id="@+id/img_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/close"
+        app:layout_anchor="@+id/img_hero"
+        app:layout_anchorGravity="end|top" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

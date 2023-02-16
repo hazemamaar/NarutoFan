@@ -21,6 +21,6 @@
         tools:layout="@layout/fragment_hero" >
         <argument
             android:name="hero"
-            app:argType="com.example.home.data.remote.Hero" />
+            app:argType="com.example.home.data.Hero" />
     </fragment>
 </navigation>

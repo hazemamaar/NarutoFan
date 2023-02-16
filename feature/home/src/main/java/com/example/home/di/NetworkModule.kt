@@ -1,11 +1,14 @@
 package com.example.home.di
 
 import android.content.Context
+import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.home.R
 import com.example.home.common.uitils.Constant
+import com.example.home.data.local.HeroDB
+import com.example.home.data.local.HeroDao
 import com.example.home.data.remote.service.ApiService
 import dagger.Module
 import dagger.Provides
@@ -37,9 +40,9 @@ class NetworkModule{
         interceptor: HttpLoggingInterceptor,
     ): OkHttpClient =
         OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(50, TimeUnit.SECONDS)
+            .writeTimeout(50, TimeUnit.SECONDS)
+            .readTimeout(50, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
             .addInterceptor { chain ->
                 val original: Request = chain.request()
@@ -76,5 +79,15 @@ class NetworkModule{
             .placeholder(R.drawable.placeholder)
             .error(R.drawable.network_error)
             .diskCacheStrategy(DiskCacheStrategy.DATA))
-
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@ApplicationContext appContext: Context): HeroDB {
+        return Room.databaseBuilder(
+            appContext,
+            HeroDB::class.java,
+            "hero_db"
+        ).fallbackToDestructiveMigration().build()
+    }
+    @Provides
+    fun provideSearchHistoryDao(roomDataBase: HeroDB)= roomDataBase.heroDao
 }

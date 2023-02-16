@@ -6,6 +6,67 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.GetAllNarutoFragment">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputTextLayoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusTopStart="0dp"
+        app:boxCornerRadiusTopEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:boxStrokeWidth="0dp"
+        app:hintEnabled="false"
+        app:endIconCheckable="true"
+        app:startIconCheckable="false"
+        app:endIconDrawable="@drawable/close"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/white"
+        app:startIconTint="@color/white"
+        app:startIconDrawable="@drawable/search">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputEditTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_search_btn"
+            android:inputType="text"
+            android:hint="Explore"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <ImageView
+        android:id="@+id/img_message"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputTextLayoutSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:src="@drawable/search_document"/>
+
+    <TextView
+        android:id="@+id/txt_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_message"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@id/inputTextLayoutSearch"
+        >
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer"
@@ -42,7 +103,7 @@
         android:id="@+id/rv_naruto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,4 +112,5 @@
         tools:listitem="@layout/item_naruto_rv"
         tools:itemCount="20"
         />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

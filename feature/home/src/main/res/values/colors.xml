@@ -6,4 +6,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bottom_sheet_background">#084888</color>
     <color name="bottom_sheet_text">#BBBBBB</color>
+    <color name="background_search_btn">#301E67</color>
+    <color name="search_color">#A4A4A4</color>
 </resources>

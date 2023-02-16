@@ -25,33 +25,50 @@ in case we need extra data for our use case.
  * @param ResultType: the result returned after mapping the response to to the View
  */
 //Use this class if you want to manage the cycle between remote and local APIs
-//abstract class BaseLocalUseCase<RequestType : BaseCommonResponse, ResultType : Any, in Params> :
-//    BaseCommonUseCase<RequestType, ResultType, Params>() {
-//    // run the local fun
-//    abstract fun executeLocal(params: Params?): Flow<ResultType>
-//
-//    // ask if should we run the network or just pass the local data ?
-//    abstract fun shouldFetch(localData: ResultType?): Boolean
-//
-//    // ask if we should cache the response in local DB
-//    abstract fun shouldCacheResponse(resData: RequestType, localData: ResultType): Boolean
-//
-//    // action save to local DB
-//    abstract suspend fun saveToLocal(res: ResultType)
-//
-//    fun invoke(
-//        scope: CoroutineScope,
-//        params: Params? = null,
-//        onResult: (Resource<ResultType>) -> Unit = {}
-//    ) {
-//        scope.launch(handler(onResult) + Dispatchers.Main) {
-//            onResult.invoke(Resource.loading())
-//            //Run local first
-//            runFlow(executeLocal(params), onResult).collect { localData ->
-//                if (shouldFetch(localData)) { //call network and get result
-//                    runFlow(executeRemote(params), onResult).collect {
+abstract class BaseLocalUseCase<RequestType : BaseCommonResponse, ResultType : Any, in Params> :
+    BaseCommonUseCase<RequestType, ResultType, Params>() {
+    // run the local fun
+    abstract fun executeLocal(params: Params?): Flow<ResultType>
+
+    // ask if should we run the network or just pass the local data ?
+    abstract fun shouldFetch(localData: ResultType?): Boolean
+
+    // ask if we should cache the response in local DB
+    abstract fun shouldCacheResponse(resData: RequestType, localData: ResultType): Boolean
+
+    // action save to local DB
+    abstract suspend fun saveToLocal(res: ResultType)
+
+    fun invoke(
+        scope: CoroutineScope,
+        params: Params? = null,
+        onResult: (Resource<ResultType>) -> Unit = {}
+    ) {
+        scope.launch(handler(onResult) + Dispatchers.Main) {
+            onResult.invoke(Resource.loading())
+            //Run local first
+            runFlow(executeLocal(params), onResult).collect { localData ->
+                if (shouldFetch(localData)) { //call network and get result
+                    runFlow(executeRemote(params), onResult).collect {
+                        try {
+                            if (it.success == true
+                            ) {
+                                val res = mapper(it)
+                                val shouldCache = shouldCacheResponse(it, localData)
+                                if (shouldCache)
+                                    saveToLocal(res)
+                                onResult.invoke(Resource.success(res))
+                            } else {
+                                showFailureMessage(onResult, it.message)
+                            }
+                        }catch (e: Exception) {
+                            showFailureMessage(
+                                onResult,
+                                it.message
+                            )
+                        }
 //                        when (it) {
-//                            is NetworkResponse.Success -> {
+//                            is Resource.Success -> {
 //                                if (it.body.success == true) {
 //                                    val res = mapper(it.body)
 //                                    val shouldCache = shouldCacheResponse(it.body, localData)
@@ -75,12 +92,12 @@ in case we need extra data for our use case.
 //                                it.error.toString()
 //                            )
 //                        }
-//                    }
-//                } else //get local
-//                    onResult.invoke(Resource.success(localData))
-//                onResult.invoke(Resource.loading(false))
-//            }
-//        }
-//    }
-//
-//}
+                    }
+                } else //get local
+                    onResult.invoke(Resource.success(localData))
+                onResult.invoke(Resource.loading(false))
+            }
+        }
+    }
+
+}
