@@ -75,7 +75,7 @@ class OnBoardingFragment : BaseFragment<FragmentOnBoardingBinding,OnBoardingView
 
     private fun subscribeToObservers() {
         mViewModel.apply {
-            observe(mViewModel.viewState) {
+            observe(viewState) {
                 handleUiState(it)
             }
         }

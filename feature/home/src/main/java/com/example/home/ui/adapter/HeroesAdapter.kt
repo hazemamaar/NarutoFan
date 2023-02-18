@@ -20,6 +20,9 @@ class HeroesAdapter @Inject constructor(val glide: RequestManager) :
         fun bind(item: Hero) {
             binding.titleTxt.text = item.name
             binding.desTxt.text = item.about
+            binding.ratingHero.rating = item.rating.toFloat()
+            binding.ratingHero.stepSize = 0.1f
+
             glide.load("${Constant.BASE_URL}${item.image}")
                 .into(binding.imgHero)
            binding.cardContainer.setOnClickListener {

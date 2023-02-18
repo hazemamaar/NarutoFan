@@ -11,25 +11,25 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
+import javax.inject.Inject
 
 
+const val PREFERENCE_NAME = "naruto-datastore"
 
-const val PREFERENCE_NAME = "my_preference"
-
-class PreDataStore(context: Context) {
+class PreDataStore @Inject constructor(context: Context) {
     private object PreferenceKeys {
-        val name = preferencesKey<String>("my_name")
+        val firstOpen = preferencesKey<Boolean>("first_open")
     }
 
-    val dataStore: DataStore<androidx.datastore.preferences.Preferences> = context.createDataStore(name = "gfg-datastore")
+    private val dataStore: DataStore<androidx.datastore.preferences.Preferences> = context.createDataStore(name = "naruto-datastore")
 
-    suspend fun saveToDataStore(name: String) {
+    suspend fun saveToDataStore(name: Boolean) {
         dataStore.edit { preference ->
-            preference[PreferenceKeys.name] = name
+            preference[PreferenceKeys.firstOpen] = name
         }
     }
 
-    val readFromDataStore: Flow<String> = dataStore.data
+    val readFromDataStore: Flow<Boolean> = dataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 Log.e("DataStore", exception.message.toString())
@@ -39,7 +39,7 @@ class PreDataStore(context: Context) {
             }
         }
         .map { preference ->
-            val myName = preference[PreferenceKeys.name] ?: "none"
+            val myName = preference[PreferenceKeys.firstOpen] ?: false
             myName
         }
 

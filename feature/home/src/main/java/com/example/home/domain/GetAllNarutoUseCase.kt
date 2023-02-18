@@ -11,18 +11,16 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetAllNarutoUseCase @Inject constructor(private val dataRepo: DataRepo): BaseLocalUseCase<BaseResponse<List<Hero>>, List<Hero>, Any>() {
-    var shouldFetchNow = true
+    var shouldFetchNow = false
     override fun mapper(req: BaseResponse<List<Hero>>): List<Hero> {
         return req.data!!
     }
 
     override fun executeRemote(params: Any?): Flow<BaseResponse<List<Hero>>> = flow{
-        Log.e("xxx", "executeLocal: "+dataRepo.getLocalHeroes() )
         emit(dataRepo.getAllNaruto())
     }
 
     override fun executeLocal(params: Any?): Flow<List<Hero>> =flow {
-        Log.e("xxx", "executeLocal: "+dataRepo.getLocalHeroes() )
         emit(dataRepo.getLocalHeroes())
     }
 

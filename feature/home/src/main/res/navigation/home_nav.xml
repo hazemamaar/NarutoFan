@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_getAllNarutoFragment_to_heroFragment"
             app:destination="@id/heroFragment" />
+        <action
+            android:id="@+id/action_getAllNarutoFragment_to_searchHeroFragment"
+            app:destination="@id/searchHeroFragment" />
     </fragment>
     <fragment
         android:id="@+id/heroFragment"
@@ -22,5 +25,14 @@
         <argument
             android:name="hero"
             app:argType="com.example.home.data.Hero" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchHeroFragment"
+        android:name="com.example.home.ui.fragment.SearchHeroFragment"
+        android:label="fragment_search_hero"
+        tools:layout="@layout/fragment_search_hero" >
+        <action
+            android:id="@+id/action_searchHeroFragment_to_heroFragment"
+            app:destination="@id/heroFragment" />
     </fragment>
 </navigation>

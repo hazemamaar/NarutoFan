@@ -1,13 +1,11 @@
 package com.example.home.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.core.base.Action
 import com.example.core.base.BaseViewModel
 import com.example.core.response.Resource
 import com.example.home.data.Hero
 import com.example.home.domain.GetAllNarutoUseCase
-import com.example.home.domain.SearchUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -20,10 +18,10 @@ sealed class HeroesAction: Action{
 
 }
 @HiltViewModel
-class GetAllNarutoViewModel @Inject constructor(private val getAllNarutoUseCase: GetAllNarutoUseCase,private val searchUseCase: SearchUseCase) : BaseViewModel<HeroesAction>() {
+class GetAllNarutoViewModel @Inject constructor(private val getAllNarutoUseCase: GetAllNarutoUseCase) : BaseViewModel<HeroesAction>() {
 
-    fun getAllNaruto(){
-        getAllNarutoUseCase.shouldFetchNow =true
+    fun getAllNaruto(fetch: Boolean) {
+        getAllNarutoUseCase.shouldFetchNow = fetch
         getAllNarutoUseCase.invoke(viewModelScope) { res ->
             when (res) {
                 is Resource.Failure -> {
@@ -35,7 +33,7 @@ class GetAllNarutoViewModel @Inject constructor(private val getAllNarutoUseCase:
                     else
                         produce(HeroesAction.Success(res.data))
                 }
-                is Resource.Progress ->{
+                is Resource.Progress -> {
 
                     produce(HeroesAction.Loading(res.loading))
                 }
@@ -44,20 +42,4 @@ class GetAllNarutoViewModel @Inject constructor(private val getAllNarutoUseCase:
             }
         }
     }
-    fun searchHeroes(query: String){
-        searchUseCase.invoke(viewModelScope,query){ res->
-            when (res) {
-                is Resource.Failure -> {
-                    produce(HeroesAction.Failure(res.message.toString()))
-                }
-                is Resource.Success -> {
-                    produce(HeroesAction.Success(res.data))
-                }
-                is Resource.Progress ->{
-                    produce(HeroesAction.Loading(res.loading))
-                }
-                else -> {}
-            }
-        }
-        }
-    }
+}

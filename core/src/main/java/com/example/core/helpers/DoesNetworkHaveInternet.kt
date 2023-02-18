@@ -7,7 +7,6 @@ import java.net.Socket
 
 object DoesNetworkHaveInternet {
     // Make sure to execute this on a background thread.
-    val TAG="hazem"
     fun execute(): Boolean {
         return try{
             Log.d(TAG, "PINGING google.")

@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_splashFragment_to_onBoardingFragment"
             app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_home_nav"
+            app:destination="@id/home_nav" />
     </fragment>
     <include app:graph="@navigation/home_nav" />
 </navigation>

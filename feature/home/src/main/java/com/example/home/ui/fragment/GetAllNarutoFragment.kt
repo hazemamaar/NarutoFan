@@ -1,12 +1,12 @@
 package com.example.home.ui.fragment
 
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.base.BaseFragment
 import com.example.core.extentions.*
+import com.example.core.helpers.ConnectionLiveData
 import com.example.home.R
 import com.example.home.databinding.FragmentGetAllNarutoBinding
 import com.example.home.ui.adapter.HeroesAdapter
@@ -22,30 +22,19 @@ class GetAllNarutoFragment : BaseFragment<FragmentGetAllNarutoBinding, GetAllNar
     lateinit var heroesAdapter: HeroesAdapter
 
     override fun onFragmentReady() {
-
-//        binding.inputTextLayoutSearch.setStartIconOnClickListener {
-//            binding.inputEditTextSearch.hint = "Search here..."
-//            binding.inputTextLayoutSearch.endIconMode=TextInputLayout.END_ICON_CUSTOM
-//        }
-        preSearch()
-        binding.inputTextLayoutSearch.editText?.doOnTextChanged { text, _, _, _ ->
-            if(text!!.isEmpty()){
-             heroesAdapter.heroes = emptyList()
-
+        ConnectionLiveData(requireContext()).observe(this) {
+            if (!it) {
+               getHeroes(false)
             }else{
-                mViewModel.searchHeroes(text.toString().trim())
-                subscribeToObservers()
+                getHeroes(true)
+                "connected".showLogMessage()
             }
-
-
+        }
+        binding.inputTextLayoutSearch.editText?.setOnClickListener {
+            navigateSafe(R.id.action_getAllNarutoFragment_to_searchHeroFragment, container = R.id.frag_host)
         }
         onClickHero()
-//        binding.inputTextLayoutSearch.setEndIconOnClickListener {
-//            mViewModel.getAllNaruto()
-//            subscribeToObservers()
-//        }
-        mViewModel.getAllNaruto()
-        subscribeToObservers()
+
     }
 
     override val mViewModel: GetAllNarutoViewModel by viewModels()
@@ -104,32 +93,9 @@ class GetAllNarutoFragment : BaseFragment<FragmentGetAllNarutoBinding, GetAllNar
             )
         }
     }
-  fun preSearch(){
-      binding.inputTextLayoutSearch.editText?.setOnEditorActionListener{ v, actionId, _ ->
-          if (actionId == EditorInfo.IME_ACTION_SEARCH) {
 
-              heroesAdapter.heroes = emptyList()
-              binding.imgMessage.visible()
-              return@setOnEditorActionListener true
-          }
-          false
-      }
-
-      binding.inputTextLayoutSearch.editText?.setOnClickListener {
-          binding.inputTextLayoutSearch.editText?.hint = "Search here..."
-//          binding.inputTextLayoutSearch.endIconMode=TextInputLayout.END_ICON_CUSTOM
-          binding.inputTextLayoutSearch.isEndIconVisible =true
-      }
-      binding.inputTextLayoutSearch.setStartIconOnClickListener {
-          binding.inputTextLayoutSearch.editText?.hint = "Search here..."
-
-          binding.inputTextLayoutSearch.isEndIconVisible =true
-      }
-      binding.inputTextLayoutSearch.setEndIconOnClickListener {
-          binding.inputTextLayoutSearch.endIconMode=TextInputLayout.END_ICON_CLEAR_TEXT
-          mViewModel.getAllNaruto()
-          subscribeToObservers()
-      }
-
-  }
+    private fun getHeroes(fetch:Boolean){
+        mViewModel.getAllNaruto(fetch)
+        subscribeToObservers()
+    }
 }

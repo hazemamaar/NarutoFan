@@ -15,13 +15,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-        connectionLiveData= ConnectionLiveData(this)
-        connectionLiveData.observe(this){networkAvailable->
-            if (!networkAvailable){
-                Toast.makeText(this, "No connection", Toast.LENGTH_SHORT).show()
 
-                //navController.navigate(R.id.noInternetConnectionDialog)
-            }
-        }
+
     }
 }

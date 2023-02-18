@@ -27,9 +27,9 @@
 
             <ImageView
                 android:id="@+id/img_hero"
-                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="fitXY"
                 android:src="@drawable/placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,18 +77,20 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/title_txt" />
 
-                                        <RatingBar
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="20dp"
-                                            android:layout_marginBottom="20dp"
-                                            android:isIndicator="true"
-                                            android:numStars="5"
-                                            android:rating="3.5"
-                                            android:stepSize="0.1"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toBottomOf="@id/des_txt" />
+                    <RatingBar
+                        android:id="@+id/rating_hero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:progressTint="@color/rating_color"
+                        android:rating="3.5"
+                        android:stepSize="0.5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/des_txt" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

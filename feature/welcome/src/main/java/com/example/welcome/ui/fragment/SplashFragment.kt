@@ -4,7 +4,6 @@ package com.example.welcome.ui.fragment
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import com.example.core.base.BaseFragment
-
 import com.example.core.extentions.navigateSafe
 import com.example.core.extentions.observe
 import com.example.welcome.R
@@ -15,6 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding,SplashViewModel>() {
+
+
     override fun onFragmentReady() {
         val slideAnimation = AnimationUtils.loadAnimation(context, R.anim.anim_splashscreen)
         binding.imageSplash.animation = slideAnimation
@@ -25,7 +26,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding,SplashViewModel>() {
     override val mViewModel: SplashViewModel by viewModels()
     private fun subscribeToObservers() {
         mViewModel.apply {
-            observe(mViewModel.viewState) {
+            observe(viewState) {
                 handleUiState(it)
             }
         }
@@ -33,7 +34,10 @@ class SplashFragment : BaseFragment<FragmentSplashBinding,SplashViewModel>() {
 
     private fun handleUiState(action: SplashState) {
         when (action) {
-            SplashState.TimeDone -> {
+            SplashState.Home -> {
+                navigateSafe(SplashFragmentDirections.actionSplashFragmentToHomeNav(), container = R.id.frag_host)
+            }
+            SplashState.OnBoarding -> {
                 navigateSafe(SplashFragmentDirections.actionSplashFragmentToOnBoardingFragment(), container = R.id.frag_host)
             }
         }

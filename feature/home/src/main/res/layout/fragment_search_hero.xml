@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.GetAllNarutoFragment">
+    tools:context=".ui.fragment.SearchHeroFragment">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputTextLayoutSearch"
         android:layout_width="match_parent"
@@ -19,6 +19,9 @@
         app:hintEnabled="false"
         app:endIconCheckable="true"
         app:startIconCheckable="false"
+        app:endIconDrawable="@drawable/close"
+        app:endIconMode="custom"
+        app:endIconTint="@color/white"
         app:startIconTint="@color/white"
         app:startIconDrawable="@drawable/search">
         <com.google.android.material.textfield.TextInputEditText
@@ -27,10 +30,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/background_search_btn"
             android:inputType="text"
-            android:hint="Explore"
-            android:focusable="false"
-            android:focusedByDefault="false"
-            android:cursorVisible="false"
+            android:hint="search..."
+            android:maxLines="1"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:padding="10dp"
@@ -68,49 +69,50 @@
         app:layout_constraintTop_toBottomOf="@id/inputTextLayoutSearch"
         >
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="7dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shimmer_auto_start="true"
-        app:shimmer_duration="800">
-
-        <LinearLayout
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shimmer_auto_start="true"
+            app:shimmer_duration="800">
 
-            <include layout="@layout/item_placeholder_naruto"  />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-            <include layout="@layout/item_placeholder_naruto" />
-        </LinearLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_naruto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_naruto_rv"
-        tools:itemCount="20"
-        />
+                <include layout="@layout/item_placeholder_naruto"  />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+                <include layout="@layout/item_placeholder_naruto" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_naruto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_naruto_rv"
+            tools:itemCount="20"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

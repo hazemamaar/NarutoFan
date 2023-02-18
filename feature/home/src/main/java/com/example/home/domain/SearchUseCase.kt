@@ -9,7 +9,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class SearchUseCase @Inject constructor(val dataRepo: DataRepo) :BaseLocalUseCase<BaseResponse<List<Hero>>, List<Hero>, String>() {
+class SearchUseCase @Inject constructor(private val dataRepo: DataRepo) :BaseLocalUseCase<BaseResponse<List<Hero>>, List<Hero>, String>() {
+
+    var shouldFetchNow = false
     override fun mapper(req: BaseResponse<List<Hero>>): List<Hero> {
         return req.data!!
     }
@@ -21,7 +23,7 @@ class SearchUseCase @Inject constructor(val dataRepo: DataRepo) :BaseLocalUseCas
     override fun executeLocal(params: String?): Flow<List<Hero>> = dataRepo.searchLocalByName(params!!)
 
 
-    override fun shouldFetch(localData: List<Hero>?): Boolean =false
+    override fun shouldFetch(localData: List<Hero>?): Boolean =shouldFetchNow
 
     override fun shouldCacheResponse(
         resData: BaseResponse<List<Hero>>,

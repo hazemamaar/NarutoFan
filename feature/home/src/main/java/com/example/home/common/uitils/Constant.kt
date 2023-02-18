@@ -1,5 +1,5 @@
 package com.example.home.common.uitils
 
 object Constant {
-     const val BASE_URL="https://43d8-154-182-64-188.eu.ngrok.io"
+     const val BASE_URL="https://09ec-154-182-93-49.eu.ngrok.io"
 }

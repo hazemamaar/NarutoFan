@@ -37,6 +37,7 @@
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         app:cornerRadius="10dp"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/indicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -22,7 +22,7 @@
         android:id="@+id/img_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         android:src="@drawable/close"
         app:layout_anchor="@+id/img_hero"
         app:layout_anchorGravity="end|top" />

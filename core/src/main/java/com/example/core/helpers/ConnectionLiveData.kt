@@ -13,12 +13,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ConnectionLiveData  constructor(context: Context) : LiveData<Boolean>() {
-    //
+val TAG = "C-Manager"
+
+/**
+ * Save all available networks with an internet connection to a set (@validNetworks).
+ * As long as the size of the set > 0, this LiveData emits true.
+ * MinSdk = 21.
+ *
+ * Inspired by:
+ * https://github.com/AlexSheva-mason/Rick-Morty-Database/blob/master/app/src/main/java/com/shevaalex/android/rickmortydatabase/utils/networking/ConnectionLiveData.kt
+ */
+
+class ConnectionLiveData(context: Context) : LiveData<Boolean>() {
+
     private lateinit var networkCallback: ConnectivityManager.NetworkCallback
     private val cm = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
     private val validNetworks: MutableSet<Network> = HashSet()
-    val TAG="hazem"
+
     private fun checkValidNetworks() {
         postValue(validNetworks.size > 0)
     }
@@ -55,12 +66,12 @@ class ConnectionLiveData  constructor(context: Context) : LiveData<Boolean>() {
                             Log.d(TAG, "onAvailable: adding network. ${network}")
                             validNetworks.add(network)
                             checkValidNetworks()
-                            koko()
                         }
                     }
                 }
             }
         }
+
         /*
           If the callback was registered with registerNetworkCallback() it will be called for each network which no longer satisfies the criteria of the callback.
           Source: https://developer.android.com/reference/android/net/ConnectivityManager.NetworkCallback#onLost(android.net.Network)
@@ -70,9 +81,6 @@ class ConnectionLiveData  constructor(context: Context) : LiveData<Boolean>() {
             validNetworks.remove(network)
             checkValidNetworks()
         }
-
-    }
-    fun koko(){
 
     }
 
