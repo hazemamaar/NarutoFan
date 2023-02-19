@@ -25,6 +25,8 @@ App respects its Base (Fragment , Activity , ViewMode , UseCase)
 ##Architecture
 
 clean Architecture with MVI
+
+
 <img src="https://user-images.githubusercontent.com/62269304/219953027-99181bcb-3520-4c21-9408-5ad0b3c71731.png" width="200">&nbsp; 
 
 ## Built With
