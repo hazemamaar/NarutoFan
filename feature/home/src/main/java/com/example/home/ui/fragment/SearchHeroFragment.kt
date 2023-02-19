@@ -44,6 +44,8 @@ class SearchHeroFragment : BaseFragment<FragmentSearchHeroBinding,SearchHeroView
         }
         onClickHero()
                 binding.inputTextLayoutSearch.editText?.doOnTextChanged { text, _, _, _ ->
+                    binding.imgMessage.gone()
+                    binding.txtMessage.gone()
             if(text!!.isEmpty()){
              heroesAdapter.heroes = emptyList()
 
@@ -88,6 +90,8 @@ class SearchHeroFragment : BaseFragment<FragmentSearchHeroBinding,SearchHeroView
             }
             is SearchAction.Loading -> {
                 if (action.loading) {
+                    binding.imgMessage.gone()
+                    binding.txtMessage.gone()
                     binding.shimmer.visible()
                 }
             }

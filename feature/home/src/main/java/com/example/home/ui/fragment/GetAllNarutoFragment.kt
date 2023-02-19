@@ -20,21 +20,16 @@ import javax.inject.Inject
 class GetAllNarutoFragment : BaseFragment<FragmentGetAllNarutoBinding, GetAllNarutoViewModel>() {
     @Inject
     lateinit var heroesAdapter: HeroesAdapter
-
     override fun onFragmentReady() {
+
         ConnectionLiveData(requireContext()).observe(this) {
-            if (!it) {
-               getHeroes(false)
-            }else{
-                getHeroes(true)
-                "connected".showLogMessage()
-            }
+            getHeroes(it)
         }
         binding.inputTextLayoutSearch.editText?.setOnClickListener {
             navigateSafe(R.id.action_getAllNarutoFragment_to_searchHeroFragment, container = R.id.frag_host)
         }
         onClickHero()
-
+        getHeroes(false)
     }
 
     override val mViewModel: GetAllNarutoViewModel by viewModels()
@@ -71,16 +66,16 @@ class GetAllNarutoFragment : BaseFragment<FragmentGetAllNarutoBinding, GetAllNar
                 }
                 binding.shimmer.gone()
             }
-           is HeroesAction.NoHeroes -> {
-                binding.apply {
-                    imgMessage.setImageResource(R.drawable.network_error)
-                    txtMessage.setText(R.string.no_internet_or_cache)
-                    imgMessage.visible()
-                    txtMessage.visible()
-                    shimmer.gone()
-                }
-
-            }
+//           is HeroesAction.NoHeroes -> {
+//                binding.apply {
+//                    imgMessage.setImageResource(R.drawable.network_error)
+//                    txtMessage.setText(R.string.no_internet_or_cache)
+//                    imgMessage.visible()
+//                    txtMessage.visible()
+//                    shimmer.gone()
+//                }
+//
+//            }
             else -> {}
         }
     }

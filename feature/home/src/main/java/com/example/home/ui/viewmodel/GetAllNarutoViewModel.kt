@@ -34,7 +34,6 @@ class GetAllNarutoViewModel @Inject constructor(private val getAllNarutoUseCase:
                         produce(HeroesAction.Success(res.data))
                 }
                 is Resource.Progress -> {
-
                     produce(HeroesAction.Loading(res.loading))
                 }
 

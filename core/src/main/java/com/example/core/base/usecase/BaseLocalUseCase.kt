@@ -7,23 +7,7 @@ import com.example.core.response.Resource
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
-/**
- * Created by Mahmoud Ayman on 1/4/2021.
- */
-/**
-- Acts as a contract for all the use cases in our application:
- * Abstract class for a Use Case (Interactor in terms of Clean Architecture).
- * This abstraction represents an execution unit for different use cases (this means that any use
- * case in the application should implement this contract).
- *
- * By convention each [UseCase] implementation will execute its job in a background thread
- * (kotlin coroutine) and will post the result in the UI thread.
 
- * @param RequestType: a return type which is the result of the network execution.
- * @param Params: a parameters class which will be consumed inside the [invoke] function
-in case we need extra data for our use case.
- * @param ResultType: the result returned after mapping the response to to the View
- */
 //Use this class if you want to manage the cycle between remote and local APIs
 abstract class BaseLocalUseCase<RequestType : BaseCommonResponse, ResultType : Any, in Params> :
     BaseCommonUseCase<RequestType, ResultType, Params>() {
@@ -67,31 +51,6 @@ abstract class BaseLocalUseCase<RequestType : BaseCommonResponse, ResultType : A
                                 it.message
                             )
                         }
-//                        when (it) {
-//                            is Resource.Success -> {
-//                                if (it.body.success == true) {
-//                                    val res = mapper(it.body)
-//                                    val shouldCache = shouldCacheResponse(it.body, localData)
-//                                    if (shouldCache)
-//                                        saveToLocal(res)
-//                                    onResult.invoke(Resource.success(res))
-//                                } else {
-//                                    showFailureMessage(onResult, it.body.message)
-//                                }
-//                            }
-//                            is NetworkResponse.NetworkError -> showFailureMessage(
-//                                onResult,
-//                                it.error.toString()
-//                            )
-//                            is NetworkResponse.ServerError -> showFailureMessage(
-//                                onResult,
-//                                it.body?.message
-//                            )
-//                            is NetworkResponse.UnknownError -> showFailureMessage(
-//                                onResult,
-//                                it.error.toString()
-//                            )
-//                        }
                     }
                 } else //get local
                     onResult.invoke(Resource.success(localData))
