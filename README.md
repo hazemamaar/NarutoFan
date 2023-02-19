@@ -7,12 +7,11 @@ App respects its Base (Fragment , Activity , ViewMode , UseCase)
  
 <img src="https://user-images.githubusercontent.com/62269304/219944612-807563fd-d3eb-4d59-afd2-784edf275e5d.jpg" width="200">&nbsp; 
 <img src="https://user-images.githubusercontent.com/62269304/219944621-fd17dfd1-0ef5-433e-a8cb-a7410798f252.jpg" width="200">&nbsp; 
-
 <img src="https://user-images.githubusercontent.com/62269304/219944625-9f4acbe7-71d0-40ea-b664-1b07de24fae5.jpg" width="200">&nbsp; 
 <img src="https://user-images.githubusercontent.com/62269304/219944626-d94b0f06-f4a9-44b6-a03f-3cebd200bef9.jpg" width="200">&nbsp; 
+
 <img src="https://user-images.githubusercontent.com/62269304/219944627-9081e4dc-9ae0-4e64-8543-a50d9c26ab71.jpg" width="200">&nbsp; 
 <img src="https://user-images.githubusercontent.com/62269304/219944629-785f1ae9-d730-42f4-bf8a-12bca70ae404.jpg" width="200">&nbsp; 
-
 <img src="https://user-images.githubusercontent.com/62269304/219944632-3d59d50a-8a86-4ed5-8ed9-62207f1195c6.jpg" width="200">&nbsp; 
 <img src="https://user-images.githubusercontent.com/62269304/219944633-ab1eabed-73a3-440e-a6e4-bb4e0022f723.jpg" width="200">&nbsp; 
 
