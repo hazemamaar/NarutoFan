@@ -22,12 +22,12 @@ App respects its Base (Fragment , Activity , ViewMode , UseCase)
 <img src="https://user-images.githubusercontent.com/62269304/219944647-d549ec37-1b76-4f6f-9d49-5b80294a175a.jpg" width="200">&nbsp; 
 
 
-##Architecture
+## Architecture
 
-clean Architecture with MVI
+Clean Architecture with MVI
 
 
-<img src="https://user-images.githubusercontent.com/62269304/219953027-99181bcb-3520-4c21-9408-5ad0b3c71731.png" width="200">&nbsp; 
+<img src="https://user-images.githubusercontent.com/62269304/219953027-99181bcb-3520-4c21-9408-5ad0b3c71731.png" width="800">&nbsp; 
 
 ## Built With
 
